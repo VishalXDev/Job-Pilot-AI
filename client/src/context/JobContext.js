@@ -1,29 +1,34 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import API from '../api/api';
+import { useAuth } from './AuthContext';
 
 const JobContext = createContext();
 
 export function JobProvider({ children }) {
   const [jobs, setJobs] = useState([]);
-
-  const fetchJobs = async () => {
-    const token = localStorage.getItem('token');
-    if (!token) return; // 🔐 Skip fetching if no token
-
-    try {
-      const res = await API.get('/jobs');
-      setJobs(res.data);
-    } catch (err) {
-      console.error('❌ Failed to fetch jobs:', err);
-    }
-  };
+  const { token } = useAuth();
 
   useEffect(() => {
-    fetchJobs(); // 🔄 Only fetch if token exists
-  }, []);
+    if (!token) return;
+
+    const fetchJobs = async () => {
+      try {
+        const res = await API.get('/jobs', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        setJobs(res.data);
+      } catch (err) {
+        console.error('❌ Failed to fetch jobs:', err.message);
+      }
+    };
+
+    fetchJobs();
+  }, [token]);
 
   return (
-    <JobContext.Provider value={{ jobs, setJobs, fetchJobs }}>
+    <JobContext.Provider value={{ jobs, setJobs }}>
       {children}
     </JobContext.Provider>
   );

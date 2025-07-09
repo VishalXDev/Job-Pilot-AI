@@ -11,13 +11,21 @@ const sendInterviewReminders = require("./utils/emailReminder");
 
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
+// ✅ Default route to avoid 404 on /
+app.get("/", (req, res) => {
+  res.send("✅ JobPilot API backend is running.");
+});
+
+// Routes
 app.use("/api/ai", aiRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/jobs", jobRoutes);
 
+// MongoDB connection
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {

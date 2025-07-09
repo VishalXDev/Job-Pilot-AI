@@ -4,7 +4,7 @@ const API = axios.create({
   baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5000/api',
 });
 
-// Attach token for authenticated requests
+// Attach token to requests
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) {
@@ -13,7 +13,7 @@ API.interceptors.request.use((config) => {
   return config;
 });
 
-// Handle 401 errors globally
+// Handle 401 errors
 API.interceptors.response.use(
   (response) => response,
   (error) => {
