@@ -15,12 +15,16 @@ const app = express();
 // === TRUST PROXY IF BEHIND VERCEL/RENDER ===
 app.set("trust proxy", 1);
 
-// === ENHANCED CORS CONFIG ===
+// === ALLOWED ORIGINS ===
 const allowedOrigins = [
   "https://job-pilot-ai.vercel.app", // ✅ deployed frontend
-  "http://localhost:3000",            // ✅ local frontend
+  "http://localhost:3000",           // ✅ local frontend
 ];
 
+// === HANDLE CORS PREFLIGHT REQUESTS ===
+app.options("*", cors()); // ✅ Preflight support
+
+// === ENHANCED CORS CONFIG ===
 app.use((req, res, next) => {
   console.log("🔍 Incoming Origin:", req.headers.origin);
   next();
@@ -39,12 +43,14 @@ app.use(
   })
 );
 
+// === PARSE JSON REQUESTS ===
 app.use(express.json());
 
 // === ROUTES ===
 app.get("/", (req, res) => {
   res.send("✅ JobPilot API backend is running.");
 });
+
 app.use("/api/ai", aiRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/jobs", jobRoutes);
