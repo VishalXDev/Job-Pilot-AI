@@ -29,17 +29,6 @@ app.get("/", (req, res) => {
 app.use("/api/ai", aiRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/jobs", jobRoutes);
-
-// === SERVE FRONTEND IN PRODUCTION ===
-if (process.env.NODE_ENV === "production") {
-  const clientPath = path.join(__dirname, "../client/build");
-  app.use(express.static(clientPath));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(clientPath, "index.html"));
-  });
-}
-
 // === START SERVER AFTER DB CONNECTION ===
 mongoose
   .connect(process.env.MONGO_URI)
