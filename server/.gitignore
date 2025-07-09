@@ -4,13 +4,13 @@
 /node_modules
 node_modules
 package-lock.json
-package.json
+# package.json
 .pnp
 .pnp.js
 
 ### Environment ###
 .env
-.env.local
+# .env.local
 .env.development.local
 .env.test.local
 .env.production.local
