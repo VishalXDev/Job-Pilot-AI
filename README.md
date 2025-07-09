@@ -1,149 +1,148 @@
-# 🧠 JonPolitAi – AI-Powered Job Tracker
+# 🧠 JobPilot AI – AI-Powered Job Tracker
 
-https://via.placeholder.com/1200x400?text=Project+Seal+X+Banner
+![JobPilot Banner](https://via.placeholder.com/1200x400?text=JobPilot+AI+Banner)
 
-A full-stack application to supercharge your job search with AI-powered tools
+A full-stack application to supercharge your job search with AI-powered tools.
 
-✨ Features
-🧠 AI-Powered Job Search Tools
-Smart Resume Analyzer - Get tailored suggestions to improve your resume
+---
 
-Personalized Cover Letter Generator - Create custom cover letters in seconds
+## ✨ Features
 
-Job Description Parser - Extract key requirements from job postings
+### 🧠 AI-Powered Job Search Tools
+- **Smart Resume Analyzer** – Get tailored suggestions to improve your resume  
+- **Personalized Cover Letter Generator** – Create custom cover letters in seconds  
+- **Job Description Parser** – Extract key requirements from job postings
 
-📊 Application Management
-Dashboard Overview - Visualize your job search progress
+### 📊 Application Management
+- **Dashboard Overview** – Visualize your job search progress  
+- **Status Tracking** – Track applications (Applied, Interview, Offer, Rejected)  
+- **Deadline Reminders** – Never miss an application deadline
 
-Status Tracking - Track applications (Applied, Interviewing, Offer, Rejected)
+### 🔒 Secure & Reliable
+- **JWT Authentication** – Secure user accounts  
+- **Data Encryption** – Protect your sensitive information  
+- **Cloud Backups** – Never lose your application history
 
-Deadline Reminders - Never miss an application deadline
+---
 
-🔒 Secure & Reliable
-JWT Authentication - Secure user accounts
+## 🛠 Tech Stack
 
-Data Encryption - Protect your sensitive information
+### 🔹 Frontend
+- React (CRA)
+- Tailwind CSS
+- React Router v6
+- Axios
+- React Hook Form
+- React Icons
 
-Cloud Backups - Never lose your application history
+### 🔸 Backend
+- Node.js with Express
+- MongoDB with Mongoose
+- JWT for Authentication
+- Bcrypt for Password Hashing
+- Nodemailer for Email Notifications
 
-🛠 Tech Stack
-Frontend
-React (Create React App)
+### 🤖 AI Services
+- OpenAI API (GPT-4) for content generation
+- PDF Parsing for Resume Analysis
 
-Tailwind CSS with custom components
+---
 
-React Router v6 for navigation
+## 🚀 Getting Started
 
-Axios for API calls
+### 🔧 Prerequisites
+- Node.js (v16 or higher)
+- MongoDB Atlas account or local MongoDB
+- OpenAI API key
 
-React Hook Form for forms
+### 📦 Installation
 
-React Icons for beautiful icons
+#### 1. Clone the Repository
 
-Backend
-Node.js with Express framework
-
-MongoDB with Mongoose ODM
-
-JWT for authentication
-
-Bcrypt for password hashing
-
-Nodemailer for email notifications
-
-AI Services
-OpenAI API (GPT-4) for content generation
-
-PDF parsing for resume analysis
-
-🚀 Getting Started
-Prerequisites
-Node.js (v16 or higher)
-
-MongoDB Atlas account or local MongoDB
-
-OpenAI API key
-
-Installation
-Clone the repository
-
+```bash
+git clone https://github.com/your-username/jobpilot-ai.git
+cd jobpilot-ai
+2. Setup the Backend
 bash
-git clone https://github.com/your-username/project-seal-x.git
-cd project-seal-x
-Set up the backend
-
-bash
+Copy
+Edit
 cd server
 npm install
 cp .env.example .env
-
-# Update .env with your credentials
-
-Set up the frontend
-
+# ✅ Update .env with your credentials
+3. Setup the Frontend
 bash
+Copy
+Edit
 cd ../client
 npm install
 cp .env.example .env
-
-# Update .env with your API URL
-
-Run the application
-
-In one terminal:
+# ✅ Update .env with your API URL
+4. Run the Application
+Start the backend:
 
 bash
-cd server && npm start
-In another terminal:
+Copy
+Edit
+cd server
+npm start
+Start the frontend:
 
 bash
-cd client && npm start
+Copy
+Edit
+cd client
+npm start
 📂 Project Structure
-text
-project-seal-x/
-├── client/ # React frontend
-│ ├── public/ # Static files
-│ ├── src/ # React source
-│ │ ├── assets/ # Images, fonts
-│ │ ├── components/ # Reusable components
-│ │ ├── context/ # React context providers
-│ │ ├── hooks/ # Custom hooks
-│ │ ├── pages/ # Application pages
-│ │ ├── services/ # API service calls
-│ │ ├── styles/ # Global styles
-│ │ ├── utils/ # Utility functions
-│ │ └── App.js # Main App component
-│ └── .env # Frontend environment
+bash
+Copy
+Edit
+jobpilot-ai/
+├── client/           # React frontend
+│   ├── public/       # Static files
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── pages/
+│   │   ├── styles/
+│   │   ├── utils/
+│   │   └── App.js
+│   └── .env
 │
-├── server/ # Node.js backend
-│ ├── config/ # Configuration files
-│ ├── controllers/ # Route controllers
-│ ├── middleware/ # Express middleware
-│ ├── models/ # MongoDB models
-│ ├── routes/ # API routes
-│ ├── services/ # Business logic
-│ ├── utils/ # Utility functions
-│ ├── server.js # Server entry point
-│ └── .env # Backend environment
+├── server/           # Node.js backend
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── utils/
+│   ├── server.js
+│   └── .env
 │
-└── README.md # This documentation
+└── README.md
 🌐 API Endpoints
-Endpoint Method Description
-/api/auth/register POST User registration
-/api/auth/login POST User login
-/api/jobs GET Get all jobs for user
-/api/jobs POST Create new job application
-/api/jobs/:id PUT Update job application
-/api/jobs/:id DELETE Delete job application
-/api/ai/resume POST Get resume suggestions
-/api/ai/cover-letter POST Generate cover letter
+Endpoint	Method	Description
+/api/auth/register	POST	Register a new user
+/api/auth/login	POST	User login
+/api/jobs	GET	Get all jobs (protected)
+/api/jobs	POST	Create new job
+/api/jobs/:id	PUT	Update job
+/api/jobs/:id	DELETE	Delete job
+/api/ai/resume	POST	Get resume improvement tips
+/api/ai/cover-letter	POST	Generate a cover letter
+
 📝 Environment Variables
-Frontend (.env)
+🔹 Frontend (client/.env)
 env
+Copy
+Edit
 REACT_APP_API_URL=http://localhost:5000/api
 REACT_APP_GOOGLE_ANALYTICS_ID=UA-XXXXX-Y
-Backend (.env)
+🔸 Backend (server/.env)
 env
+Copy
+Edit
 PORT=5000
 MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/dbname
 JWT_SECRET=your_jwt_secret_key
@@ -154,7 +153,7 @@ EMAIL_PORT=587
 EMAIL_USER=your@email.com
 EMAIL_PASS=your_email_password
 📜 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License
 
 👨‍💻 Author
 Vishal Dwivedy
@@ -166,8 +165,12 @@ Twitter: @VishalXDev
 LinkedIn: Vishal Dwivedy
 
 🙏 Acknowledgments
-OpenAI for their amazing API
+OpenAI for GPT-4 API
 
-The React and Node.js communities
+The React & Node.js communities
 
-All the open-source libraries used in this project
+Tailwind CSS
+
+All open-source contributors
+
+⭐ If you find this project helpful, give it a star and share it!
