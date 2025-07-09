@@ -4,8 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
-package-lock.json
-package.json
+# package-lock.json
+# package.json
 
 ### Testing ###
 /coverage
@@ -27,7 +27,7 @@ jest.config.js
 
 ### Environment ###
 .env
-.env.local
+# .env.local
 .env.development.local
 .env.test.local
 .env.production.local
