@@ -1,8 +1,8 @@
+// server.js
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const cron = require("node-cron");
-const path = require("path");
 require("dotenv").config();
 
 const aiRoutes = require("./routes/aiRoutes");
@@ -12,26 +12,22 @@ const sendInterviewReminders = require("./utils/emailReminder");
 
 const app = express();
 
-// === TRUST PROXY IF BEHIND VERCEL/RENDER ===
 app.set("trust proxy", 1);
 
-// === ALLOWED ORIGINS ===
+// Allowed Origins
 const allowedOrigins = [
   "https://job-pilot-ai.vercel.app",
   "https://job-pilot-ai-git-main-vishalxdevs-projects.vercel.app",
   "http://localhost:3000",
 ];
 
-
-// === HANDLE CORS PREFLIGHT REQUESTS ===
-app.options("*", cors()); // ✅ Preflight support
-
-// === ENHANCED CORS CONFIG ===
+// CORS Debug Log
 app.use((req, res, next) => {
   console.log("🔍 Incoming Origin:", req.headers.origin);
   next();
 });
 
+// CORS Config
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -45,24 +41,21 @@ app.use(
   })
 );
 
-// === PARSE JSON REQUESTS ===
 app.use(express.json());
 
-// === ROUTES ===
+// Routes
 app.get("/", (req, res) => {
   res.send("✅ JobPilot API backend is running.");
 });
-
 app.use("/api/ai", aiRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/jobs", jobRoutes);
 
-// === MONGODB CONNECTION ===
+// MongoDB Connect
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("✅ MongoDB connected");
-
     const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => {
       console.log(`🚀 Server running at http://localhost:${PORT}`);
@@ -73,5 +66,5 @@ mongoose
     process.exit(1);
   });
 
-// === CRON JOB: Send reminders every day at 9 AM ===
+// Cron Job
 cron.schedule("0 9 * * *", sendInterviewReminders);
