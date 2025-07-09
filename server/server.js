@@ -17,10 +17,11 @@ app.set("trust proxy", 1);
 
 // === ALLOWED ORIGINS ===
 const allowedOrigins = [
-  "https://job-pilot-ai.vercel.app", // ✅ deployed frontend
-  "https://job-pilot-ai-git-main-vishalxdevs-projects.vercel.app/", // ✅ deployed frontend
-  "http://localhost:3000",           // ✅ local frontend
+  "https://job-pilot-ai.vercel.app",
+  "https://job-pilot-ai-git-main-vishalxdevs-projects.vercel.app",
+  "http://localhost:3000",
 ];
+
 
 // === HANDLE CORS PREFLIGHT REQUESTS ===
 app.options("*", cors()); // ✅ Preflight support
